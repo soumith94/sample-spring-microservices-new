@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh "whoami"
+                // Run Maven on a Unix agent.
+                sh "mvn -version"
+                
+                sh "cd config-services"
+                
+                sh "mvn package"
+                
+                sh "cd ..""
+
+                // To run Maven on a Windows agent, use
+                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+
+
+        }
+    }
+}
