@@ -4,15 +4,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh """whoami\
-                // Run Maven on a Unix agent.
-                    mvn -version\
+                sh """
+                   whoami \
+                 # This is to build maven
+                    mvn -version \
                 
-                    cd config-services\
+                    cd config-service \
                 
-                    mvn package\
+                    mvn package \
                 
-                    cd ..\"""
+                    cd ..
+                    
+                    """
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
